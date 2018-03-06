@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static class converter{
-        public float lbToKg(float lb){
+        public float mileToKm(float mile){
             return 0;
         }
 
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             return 0;
         }
 
-        public float mileToKm(float mile){
+        public float lbToKg(float lb){
             return 0;
         }
 

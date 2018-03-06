@@ -7,46 +7,177 @@
     tools:context="com.example.marcondes.projtest.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/mile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mile"
         tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="42dp" />
+        tools:layout_editor_absoluteY="49dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/km"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
         android:text="Km"
-        tools:layout_editor_absoluteX="253dp"
+        tools:layout_editor_absoluteX="244dp"
         tools:layout_editor_absoluteY="42dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btMileKM"
         android:layout_width="46dp"
         android:layout_height="43dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
         android:text="Go"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        tools:layout_editor_absoluteY="61dp" />
+        app:layout_constraintStart_toEndOf="@+id/editTextMile"
+        tools:layout_editor_absoluteY="68dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextMile"
         android:layout_width="119dp"
         android:layout_height="40dp"
         android:ems="10"
         android:inputType="number"
         tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="61dp" />
+        tools:layout_editor_absoluteY="71dp" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:layout_marginStart="32dp"
+        android:id="@+id/textViewKM"
+        android:layout_width="107dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="20dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        tools:layout_editor_absoluteY="68dp" />
+        app:layout_constraintStart_toEndOf="@+id/btMileKM"
+        tools:layout_editor_absoluteY="78dp" />
+
+
+    <TextView
+        android:id="@+id/celsius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Celsius"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <TextView
+        android:id="@+id/faraday"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:text="Faraday"
+        tools:layout_editor_absoluteX="253dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <Button
+        android:id="@+id/btCelsuisFaraday"
+        android:layout_width="46dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="20dp"
+        android:text="Go"
+        app:layout_constraintStart_toEndOf="@+id/editTextCelsius"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <EditText
+        android:id="@+id/editTextCelsius"
+        android:layout_width="119dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <TextView
+        android:id="@+id/textViewFaraday"
+        android:layout_width="107dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/btCelsuisFaraday"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <TextView
+        android:id="@+id/libra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Libra"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <TextView
+        android:id="@+id/Kilograma"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:text="Kilograma"
+        tools:layout_editor_absoluteX="253dp"
+        tools:layout_editor_absoluteY="341dp" />
+
+    <Button
+        android:id="@+id/btLibraKm"
+        android:layout_width="46dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="20dp"
+        android:text="Go"
+        app:layout_constraintStart_toEndOf="@+id/editTextLibra"
+        tools:layout_editor_absoluteY="265dp" />
+
+    <EditText
+        android:id="@+id/editTextLibra"
+        android:layout_width="119dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="271dp" />
+
+    <TextView
+        android:id="@+id/textViewKilograma"
+        android:layout_width="107dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/btLibraKm"
+        tools:layout_editor_absoluteY="275dp" />
+
+
+    <TextView
+        android:id="@+id/hz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hz"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="338dp" />
+
+    <TextView
+        android:id="@+id/Mhz"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:text="Mhz"
+        tools:layout_editor_absoluteX="253dp"
+        tools:layout_editor_absoluteY="247dp" />
+
+    <Button
+        android:id="@+id/bthzMhz"
+        android:layout_width="46dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="20dp"
+        android:text="Go"
+        app:layout_constraintStart_toEndOf="@+id/editTextHz"
+        tools:layout_editor_absoluteY="373dp" />
+
+    <EditText
+        android:id="@+id/editTextHz"
+        android:layout_width="119dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="373dp" />
+
+    <TextView
+        android:id="@+id/textViewMz"
+        android:layout_width="107dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/bthzMhz"
+        tools:layout_editor_absoluteY="373dp" />
 
 </android.support.constraint.ConstraintLayout>

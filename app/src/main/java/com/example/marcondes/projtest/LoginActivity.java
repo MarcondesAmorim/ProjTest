@@ -14,7 +14,7 @@ import java.util.Iterator;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private ListOfUser users;
+    public ListOfUser users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
