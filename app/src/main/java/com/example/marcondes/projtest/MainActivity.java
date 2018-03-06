@@ -10,4 +10,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+
+
+
+    public static class converter{
+        public float lbToKg(float lb){
+            return 0;
+        }
+
+        public float celsiusToFaraday(float c){
+            return 0;
+        }
+
+        public float mileToKm(float mile){
+            return 0;
+        }
+
+        public float hzToMhz(float hz){
+            return 0;
+        }
+    }
 }
