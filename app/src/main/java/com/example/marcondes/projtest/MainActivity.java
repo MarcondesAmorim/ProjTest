@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         tVKelvin.setText(Kelvin.toString());
     }
 
-    public void btLibraToKg(View view){
+    public void btLibraKg(View view){
         Float libra = Float.valueOf(eTxtLibra.getText().toString());
         Float kg = lbToKg(libra);
         tVKg.setText(kg.toString());
@@ -63,9 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     public float mileToKm(float mile){return 1.6f * mile;}
 
-    public float celsiusToKelvin(float celsius){
-        return celsius + 273f;
-    }
+    public float celsiusToKelvin(float celsius){return celsius + 273f;}
 
     public float lbToKg(float lb){ return lb * 0.4536f;}
 
