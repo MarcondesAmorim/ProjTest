@@ -1,183 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.marcondes.projtest.MainActivity">
+    android:rowCount="8"
+    android:columnCount="3"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/mile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mile"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="49dp" />
+        android:layout_row="0"
+        android:layout_column="0"/>
 
     <TextView
         android:id="@+id/km"
         android:layout_width="wrap_content"
-        android:layout_height="16dp"
+        android:layout_height="wrap_content"
         android:text="Km"
-        tools:layout_editor_absoluteX="244dp"
-        tools:layout_editor_absoluteY="42dp" />
-
-    <Button
-        android:id="@+id/btMileKM"
-        android:layout_width="46dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="20dp"
-        android:text="Go"
-        app:layout_constraintStart_toEndOf="@+id/editTextMile"
-        tools:layout_editor_absoluteY="68dp" />
+        android:layout_row="0"
+        android:layout_column="2"/>
 
     <EditText
         android:id="@+id/editTextMile"
-        android:layout_width="119dp"
-        android:layout_height="40dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="71dp" />
+        android:layout_row="1"
+        android:layout_column="0"/>
+
+    <Button
+        android:id="@+id/btMileKM"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="->"
+        android:layout_row="1"
+        android:layout_column="1"/>
 
     <TextView
         android:id="@+id/textViewKM"
-        android:layout_width="107dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="20dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/btMileKM"
-        tools:layout_editor_absoluteY="78dp" />
-
-
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_row="1"
+        android:layout_column="2"/>
     <TextView
         android:id="@+id/celsius"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Celsius"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="141dp" />
+        android:layout_row="2"
+        android:layout_column="0"/>
 
     <TextView
         android:id="@+id/faraday"
         android:layout_width="wrap_content"
-        android:layout_height="16dp"
+        android:layout_height="wrap_content"
         android:text="Faraday"
-        tools:layout_editor_absoluteX="253dp"
-        tools:layout_editor_absoluteY="141dp" />
-
-    <Button
-        android:id="@+id/btCelsuisFaraday"
-        android:layout_width="46dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="20dp"
-        android:text="Go"
-        app:layout_constraintStart_toEndOf="@+id/editTextCelsius"
-        tools:layout_editor_absoluteY="167dp" />
+        android:layout_row="2"
+        android:layout_column="2"/>
 
     <EditText
         android:id="@+id/editTextCelsius"
-        android:layout_width="119dp"
-        android:layout_height="40dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="167dp" />
+        android:layout_row="3"
+        android:layout_column="0"/>
+
+    <Button
+        android:id="@+id/btCelsiusFaraday"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="->"
+        android:layout_row="3"
+        android:layout_column="1"/>
+
 
     <TextView
         android:id="@+id/textViewFaraday"
-        android:layout_width="107dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="20dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/btCelsuisFaraday"
-        tools:layout_editor_absoluteY="167dp" />
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_row="3"
+        android:layout_column="2"/>
 
     <TextView
         android:id="@+id/libra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Libra"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="246dp" />
+        android:layout_row="4"
+        android:layout_column="0"/>
 
     <TextView
-        android:id="@+id/Kilograma"
+        android:id="@+id/Kg"
         android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:text="Kilograma"
-        tools:layout_editor_absoluteX="253dp"
-        tools:layout_editor_absoluteY="341dp" />
-
-    <Button
-        android:id="@+id/btLibraKm"
-        android:layout_width="46dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="20dp"
-        android:text="Go"
-        app:layout_constraintStart_toEndOf="@+id/editTextLibra"
-        tools:layout_editor_absoluteY="265dp" />
+        android:layout_height="wrap_content"
+        android:text="Kg"
+        android:layout_row="4"
+        android:layout_column="2"/>
 
     <EditText
         android:id="@+id/editTextLibra"
-        android:layout_width="119dp"
-        android:layout_height="40dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="271dp" />
+        android:layout_row="5"
+        android:layout_column="0"/>
+
+    <Button
+        android:id="@+id/btLibraKg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="->"
+        android:layout_row="5"
+        android:layout_column="1"/>
+
 
     <TextView
-        android:id="@+id/textViewKilograma"
-        android:layout_width="107dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="28dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/btLibraKm"
-        tools:layout_editor_absoluteY="275dp" />
-
+        android:id="@+id/textViewKg"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_row="5"
+        android:layout_column="2"/>
 
     <TextView
         android:id="@+id/hz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hz"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="338dp" />
+        android:text="Hz"
+        android:layout_row="6"
+        android:layout_column="0"/>
 
     <TextView
-        android:id="@+id/Mhz"
+        android:id="@+id/MHz"
         android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:text="Mhz"
-        tools:layout_editor_absoluteX="253dp"
-        tools:layout_editor_absoluteY="247dp" />
-
-    <Button
-        android:id="@+id/bthzMhz"
-        android:layout_width="46dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="20dp"
-        android:text="Go"
-        app:layout_constraintStart_toEndOf="@+id/editTextHz"
-        tools:layout_editor_absoluteY="373dp" />
+        android:layout_height="wrap_content"
+        android:text="MHz"
+        android:layout_row="6"
+        android:layout_column="2"/>
 
     <EditText
         android:id="@+id/editTextHz"
-        android:layout_width="119dp"
-        android:layout_height="40dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="373dp" />
+        android:layout_row="7"
+        android:layout_column="0"/>
+
+    <Button
+        android:id="@+id/btHzMHz"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="->"
+        android:layout_row="7"
+        android:layout_column="1"/>
+
 
     <TextView
-        android:id="@+id/textViewMz"
-        android:layout_width="107dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="28dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/bthzMhz"
-        tools:layout_editor_absoluteY="373dp" />
-
-</android.support.constraint.ConstraintLayout>
+        android:id="@+id/textViewMHz"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_row="7"
+        android:layout_column="2"/>
+</GridLayout>
