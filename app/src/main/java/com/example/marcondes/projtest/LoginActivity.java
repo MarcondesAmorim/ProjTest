@@ -7,34 +7,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.util.ArrayList;
+
+import com.example.marcondes.projtest.models.Logger;
+import com.example.marcondes.projtest.models.User;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public ListOfUser users;
+    Logger logger;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        users = new ListOfUser();
-        users.items.add(new User("marcondesjra@gmail.com", "123456"));
-        users.items.add(new User("marcondesamorim@gmail.com", "123456"));
-        users.items.add(new User("marcondes@gmail.com", "123456"));
-        users.items.add(new User("marcondesjorge@gmail.com", "123456"));
-        users.items.add(new User("m", "1"));
+        logger = new Logger();
     }
 
     public void loginActivity(View v) {
         EditText emailText;
         EditText passwordText;
-        Intent it = new Intent(LoginActivity.this, MainActivity.class);
         emailText = (EditText)findViewById(R.id.email);
         passwordText = (EditText) findViewById(R.id.password);
         User user = new User(emailText.getText().toString(), passwordText.getText().toString());
-        if(users.contains(user)){
+
+        Intent it = new Intent(LoginActivity.this, MainActivity.class);
+        if(logger.login(user)){
             startActivity(it);
-        } else{
+        }else {
             toastMessage("Email/Password invalid!");
         }
     }
@@ -44,47 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         int duration = message.length();
         Toast toast = Toast.makeText(context, message, duration);
         toast.show();
-
-    }
-    public class User{
-
-        String email;
-        String password;
-
-        User(String email, String password){
-            this.email = email;
-            this.password = password;
-        }
-
-        public boolean compareTO(User user){
-
-            String thisUserEmail = this.email.toString();
-            String thisUserPassword = this.password.toString();
-            String thatUserEmail = user.email.toString();
-            String thatUserPassword = user.password.toString();
-
-            return  thisUserEmail.equals(thatUserEmail) && thisUserPassword.equals(thatUserPassword);
-
-
-        }
     }
 
-    protected class ListOfUser{
-        ArrayList<User> items;
-
-        ListOfUser(){
-            this.items = new ArrayList<User>();
-        }
-
-        public boolean contains(User user){
-            for(User item : this.items){
-                if (item.compareTO(user))
-                    return true;
-
-            }
-            return false;
-        }
-
-    }
 }
 

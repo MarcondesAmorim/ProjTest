@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
+import com.example.marcondes.projtest.models.Conversor;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView tVKg;
     private TextView tVMHz ;
 
+    Conversor conversor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,40 +37,35 @@ public class MainActivity extends AppCompatActivity {
         tVKelvin = (TextView) findViewById(R.id.textViewKelvin);
         tVKg = (TextView) findViewById(R.id.textViewKg);
         tVMHz = (TextView) findViewById(R.id.textViewMHz);
+
+        conversor = new Conversor();
     }
 
     public void btMileToKm(View view){
-        Float mile = Float.valueOf(eTxtMile.getText().toString());
-        Float km = mileToKm(mile);
+        Double mile = Double.valueOf(eTxtMile.getText().toString());
+        Double km = conversor.mileToKm(mile);
         tVKm.setText(km.toString());
     }
 
     public void btCelsiusToKelvin(View view){
-        Float celsius = Float.valueOf(eTxtCelsius.getText().toString());
-        Float Kelvin = celsiusToKelvin(celsius);
+        Double celsius = Double.valueOf(eTxtCelsius.getText().toString());
+        Double Kelvin = conversor.celsiusToKelvin(celsius);
         tVKelvin.setText(Kelvin.toString());
     }
 
     public void btLibraKg(View view){
-        Float libra = Float.valueOf(eTxtLibra.getText().toString());
-        Float kg = lbToKg(libra);
+        Double libra = Double.valueOf(eTxtLibra.getText().toString());
+        Double kg = conversor.lbToKg(libra);
         tVKg.setText(kg.toString());
     }
 
     public void btHzToMHz(View view){
-        Float hz = Float.valueOf(eTxtHz.getText().toString());
-        Float mHz = hzToMhz(hz);
+        Double hz = Double.valueOf(eTxtHz.getText().toString());
+        Double mHz = conversor.hzToMhz(hz);
         tVMHz.setText(mHz.toString());
     }
 
 
-    public float mileToKm(float mile){return 1.6f * mile;}
-
-    public float celsiusToKelvin(float celsius){return celsius + 273f;}
-
-    public float lbToKg(float lb){ return lb * 0.4536f;}
-
-    public float hzToMhz(float hz){return hz * 0.001f;}
 
 }
 
