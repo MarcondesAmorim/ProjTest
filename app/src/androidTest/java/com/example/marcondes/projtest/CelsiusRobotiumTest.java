@@ -33,17 +33,19 @@ public class CelsiusRobotiumTest extends ActivityInstrumentationTestCase2<MainAc
     }
 
     public void testcelsiuToKevinSucesso() throws Exception{
-        double resultKelvin = conversor.celsiusToKelvin(100);
         celsiusPage.fillCelsius("100");
         celsiusPage.clickOnBtCelsiusKevin();
-        assertTrue("Value wrong", solo.searchText(Double.toString(resultKelvin)));;
+        double calculatedKelvin = conversor.celsiusToKelvin(100);
+        double resultKelvin = Double.valueOf(celsiusPage.getTextKevinResult());
+        assertEquals(calculatedKelvin, resultKelvin, 0.1);
     }
 
     public void testCelsiuBlank() throws Exception {
-        double resultKelvin = conversor.celsiusToKelvin(0);
         celsiusPage.fillCelsius("");
         celsiusPage.clickOnBtCelsiusKevin();
-        assertEquals(Double.toString(resultKelvin), celsiusPage.getTextKevinResult());
-    }
+        double calculatedKElvin = conversor.celsiusToKelvin(0);
+        double resultKevin = Double.valueOf(celsiusPage.getTextKevinResult());
+        assertEquals(calculatedKElvin, resultKevin, 0.1);
+   }
 
 }

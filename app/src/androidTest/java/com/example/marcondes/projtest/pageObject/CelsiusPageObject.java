@@ -32,11 +32,6 @@ public class CelsiusPageObject {
 
 
     public void fillCelsius(String celsius) {solo.enterText(editTextCelsius, celsius);}
-    public String getTextKevinResult(){
-
-        String retorno = textViewKelvin.getText().toString();
-    return retorno;
-
-    }
     public void clickOnBtCelsiusKevin() {solo.clickOnView(btCelsiusKevin);}
+    public String getTextKevinResult(){updateFields();return textViewKelvin.getText().toString();}
 }
