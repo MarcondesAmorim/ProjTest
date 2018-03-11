@@ -2,8 +2,8 @@ package com.example.marcondes.projtest;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.example.marcondes.projtest.models.Logger;
-import com.example.marcondes.projtest.pageObject.LoginPageObject;
+import com.example.marcondes.projtest.models.Conversor;
+import com.example.marcondes.projtest.pageObject.CelsiusPageObject;
 import com.robotium.solo.Solo;
 
 
@@ -11,20 +11,20 @@ import com.robotium.solo.Solo;
  * Created by Bruno Ribeiro on 22/02/2018.
  */
 
-public class CelsiusRobotiumTest extends ActivityInstrumentationTestCase2<LoginActivity> {
+public class CelsiusRobotiumTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     private Solo solo;
-    private LoginPageObject loginPage;
-    private Logger logger;
+    private CelsiusPageObject celsiusPage;
+    private Conversor conversor;
 
-    public CelsiusRobotiumTest(){
-        super(LoginActivity.class);
+    public CelsiusRobotiumTest(){super(MainActivity.class);
     }
 
     @Override
     public void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
-        loginPage = new LoginPageObject(solo);
+        celsiusPage = new CelsiusPageObject(solo);
+        conversor = new Conversor();
     }
 
     @Override
@@ -32,38 +32,18 @@ public class CelsiusRobotiumTest extends ActivityInstrumentationTestCase2<LoginA
         solo.finishOpenedActivities();
     }
 
-    public void testLoginSucesso() throws Exception{
-
-        loginPage.fillEmail("marcondesjra@gmail.com");
-        loginPage.fillPassword("123456");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Welcome"));
+    public void testcelsiuToKevinSucesso() throws Exception{
+        double resultKelvin = conversor.celsiusToKelvin(100);
+        celsiusPage.fillCelsius("100");
+        celsiusPage.clickOnBtCelsiusKevin();
+        assertTrue("Value wrong", solo.searchText(Double.toString(resultKelvin)));;
     }
 
-    public void testLoginEmBranco() throws Exception{
-        loginPage.fillEmail("");
-        loginPage.fillPassword("");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-        //solo.sleep(1000);
-
-        loginPage.fillEmail("bruno");
-        loginPage.fillPassword("");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-        //solo.sleep(1000);
-
-        loginPage.fillEmail("");
-        loginPage.fillPassword("1234");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-    }
-
-    public void testLoginIncorreto() throws Exception{
-        loginPage.fillEmail("userDoesNotExist");
-        loginPage.fillPassword("12341234");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Email/Password invalid!"));
+    public void testCelsiuBlank() throws Exception {
+        double resultKelvin = conversor.celsiusToKelvin(0);
+        celsiusPage.fillCelsius("");
+        celsiusPage.clickOnBtCelsiusKevin();
+        assertEquals(Double.toString(resultKelvin), celsiusPage.getTextKevinResult());
     }
 
 }

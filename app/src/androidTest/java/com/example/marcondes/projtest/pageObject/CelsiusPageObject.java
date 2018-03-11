@@ -2,6 +2,7 @@ package com.example.marcondes.projtest.pageObject;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.marcondes.projtest.R;
 import com.robotium.solo.Solo;
@@ -14,9 +15,9 @@ public class CelsiusPageObject {
 
     private Solo solo;
 
-    private EditText editTextEmail;
-    private EditText editTextPassword;
-    private Button buttonLogin;
+    private EditText editTextCelsius;
+    private TextView textViewKelvin;
+    private Button btCelsiusKevin;
 
     public CelsiusPageObject(Solo soloRef){
         this.solo = soloRef;
@@ -24,15 +25,18 @@ public class CelsiusPageObject {
     }
 
     private void updateFields() {
-        editTextEmail = (EditText) solo.getView(R.id.editEmail);
-        editTextPassword = (EditText) solo.getView(R.id.editPassword);
-        buttonLogin = (Button) solo.getView(R.id.buttomLogin);
+        editTextCelsius = (EditText) solo.getView(R.id.editTextCelsius);
+        textViewKelvin = (TextView) solo.getView(R.id.textViewKelvin);
+        btCelsiusKevin = (Button) solo.getView(R.id.btCelsiusKelvin);
     }
 
 
-    public void fillEmail(String email) {solo.enterText(editTextEmail, email);}
+    public void fillCelsius(String celsius) {solo.enterText(editTextCelsius, celsius);}
+    public String getTextKevinResult(){
 
-    public void fillPassword(String password) {solo.enterText(editTextPassword, password);}
+        String retorno = textViewKelvin.getText().toString();
+    return retorno;
 
-    public void clickOnButtonLogin() {solo.clickOnView(buttonLogin);}
+    }
+    public void clickOnBtCelsiusKevin() {solo.clickOnView(btCelsiusKevin);}
 }
