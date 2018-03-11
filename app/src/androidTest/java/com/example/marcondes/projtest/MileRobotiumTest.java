@@ -2,8 +2,8 @@ package com.example.marcondes.projtest;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.example.marcondes.projtest.models.Logger;
-import com.example.marcondes.projtest.pageObject.LoginPageObject;
+import com.example.marcondes.projtest.models.Conversor;
+import com.example.marcondes.projtest.pageObject.MilePageObject;
 import com.robotium.solo.Solo;
 
 
@@ -11,20 +11,20 @@ import com.robotium.solo.Solo;
  * Created by Bruno Ribeiro on 22/02/2018.
  */
 
-public class MileRobotiumTest extends ActivityInstrumentationTestCase2<LoginActivity> {
+public class MileRobotiumTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     private Solo solo;
-    private LoginPageObject loginPage;
-    private Logger logger;
+    private MilePageObject milePage;
+    private Conversor conversor;
 
-    public MileRobotiumTest(){
-        super(LoginActivity.class);
+    public MileRobotiumTest(){super(MainActivity.class);
     }
 
     @Override
     public void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
-        loginPage = new LoginPageObject(solo);
+        milePage = new MilePageObject(solo);
+        conversor = new Conversor();
     }
 
     @Override
@@ -32,38 +32,20 @@ public class MileRobotiumTest extends ActivityInstrumentationTestCase2<LoginActi
         solo.finishOpenedActivities();
     }
 
-    public void testLoginSucesso() throws Exception{
-
-        loginPage.fillEmail("marcondesjra@gmail.com");
-        loginPage.fillPassword("123456");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Welcome"));
+    public void testMileToKmSucesso() throws Exception{
+        milePage.fillMile("100");
+        milePage.clickOnBtMileKm();
+        double calculatedKm = conversor.mileToKm(100);
+        double resultKm = Double.valueOf(milePage.getTextKmResult());
+        assertEquals(calculatedKm, resultKm, 0.1);
     }
 
-    public void testLoginEmBranco() throws Exception{
-        loginPage.fillEmail("");
-        loginPage.fillPassword("");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-        //solo.sleep(1000);
-
-        loginPage.fillEmail("bruno");
-        loginPage.fillPassword("");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-        //solo.sleep(1000);
-
-        loginPage.fillEmail("");
-        loginPage.fillPassword("1234");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-    }
-
-    public void testLoginIncorreto() throws Exception{
-        loginPage.fillEmail("userDoesNotExist");
-        loginPage.fillPassword("12341234");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Email/Password invalid!"));
+    public void testMileBlank() throws Exception {
+        milePage.fillMile("");
+        milePage.clickOnBtMileKm();
+        double calculatedKm = conversor.mileToKm(0);
+        double resultKm = Double.valueOf(milePage.getTextKmResult());
+        assertEquals(calculatedKm, resultKm, 0.1);
     }
 
 }

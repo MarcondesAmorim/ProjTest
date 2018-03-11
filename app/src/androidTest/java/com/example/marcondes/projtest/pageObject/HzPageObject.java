@@ -2,6 +2,7 @@ package com.example.marcondes.projtest.pageObject;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.marcondes.projtest.R;
 import com.robotium.solo.Solo;
@@ -14,9 +15,9 @@ public class HzPageObject {
 
     private Solo solo;
 
-    private EditText editTextEmail;
-    private EditText editTextPassword;
-    private Button buttonLogin;
+    private EditText editTextHz;
+    private TextView textViewMhz;
+    private Button btHzMHz;
 
     public HzPageObject(Solo soloRef){
         this.solo = soloRef;
@@ -24,15 +25,13 @@ public class HzPageObject {
     }
 
     private void updateFields() {
-        editTextEmail = (EditText) solo.getView(R.id.editEmail);
-        editTextPassword = (EditText) solo.getView(R.id.editPassword);
-        buttonLogin = (Button) solo.getView(R.id.buttomLogin);
+        editTextHz = (EditText) solo.getView(R.id.editTextHz);
+        textViewMhz = (TextView) solo.getView(R.id.textViewMHz);
+        btHzMHz = (Button) solo.getView(R.id.btHzMHz);
     }
 
 
-    public void fillEmail(String email) {solo.enterText(editTextEmail, email);}
-
-    public void fillPassword(String password) {solo.enterText(editTextPassword, password);}
-
-    public void clickOnButtonLogin() {solo.clickOnView(buttonLogin);}
+    public void fillHz(String hz) {solo.enterText(editTextHz, hz);}
+    public void clickOnBtHzMHz() {solo.clickOnView(btHzMHz);}
+    public String getTextMHzResult(){updateFields();return textViewMhz.getText().toString();}
 }

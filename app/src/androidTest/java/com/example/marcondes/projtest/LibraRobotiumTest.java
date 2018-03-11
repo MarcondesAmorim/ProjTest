@@ -2,8 +2,8 @@ package com.example.marcondes.projtest;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.example.marcondes.projtest.models.Logger;
-import com.example.marcondes.projtest.pageObject.LoginPageObject;
+import com.example.marcondes.projtest.models.Conversor;
+import com.example.marcondes.projtest.pageObject.LibraPageObject;
 import com.robotium.solo.Solo;
 
 
@@ -11,20 +11,20 @@ import com.robotium.solo.Solo;
  * Created by Bruno Ribeiro on 22/02/2018.
  */
 
-public class LibraRobotiumTest extends ActivityInstrumentationTestCase2<LoginActivity> {
+public class LibraRobotiumTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     private Solo solo;
-    private LoginPageObject loginPage;
-    private Logger logger;
+    private LibraPageObject libraPage;
+    private Conversor conversor;
 
-    public LibraRobotiumTest(){
-        super(LoginActivity.class);
+    public LibraRobotiumTest(){super(MainActivity.class);
     }
 
     @Override
     public void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
-        loginPage = new LoginPageObject(solo);
+        libraPage = new LibraPageObject(solo);
+        conversor = new Conversor();
     }
 
     @Override
@@ -32,38 +32,20 @@ public class LibraRobotiumTest extends ActivityInstrumentationTestCase2<LoginAct
         solo.finishOpenedActivities();
     }
 
-    public void testLoginSucesso() throws Exception{
-
-        loginPage.fillEmail("marcondesjra@gmail.com");
-        loginPage.fillPassword("123456");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Welcome"));
+    public void testLibraToKgSucesso() throws Exception{
+        libraPage.fillLibra("100");
+        libraPage.clickOnBtLibraKg();
+        double calculatedKg = conversor.lbToKg(100);
+        double resultKg = Double.valueOf(libraPage.getTextKgResult());
+        assertEquals(calculatedKg, resultKg, 0.1);
     }
 
-    public void testLoginEmBranco() throws Exception{
-        loginPage.fillEmail("");
-        loginPage.fillPassword("");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-        //solo.sleep(1000);
-
-        loginPage.fillEmail("bruno");
-        loginPage.fillPassword("");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-        //solo.sleep(1000);
-
-        loginPage.fillEmail("");
-        loginPage.fillPassword("1234");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-    }
-
-    public void testLoginIncorreto() throws Exception{
-        loginPage.fillEmail("userDoesNotExist");
-        loginPage.fillPassword("12341234");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Email/Password invalid!"));
+    public void testlibraBlank() throws Exception {
+        libraPage.fillLibra("");
+        libraPage.clickOnBtLibraKg();
+        double calculatedKg = conversor.lbToKg(0);
+        double resultKg = Double.valueOf(libraPage.getTextKgResult());
+        assertEquals(calculatedKg, resultKg, 0.1);
     }
 
 }

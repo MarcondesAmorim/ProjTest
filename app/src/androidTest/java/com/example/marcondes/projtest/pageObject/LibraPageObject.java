@@ -2,6 +2,7 @@ package com.example.marcondes.projtest.pageObject;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.marcondes.projtest.R;
 import com.robotium.solo.Solo;
@@ -14,9 +15,9 @@ public class LibraPageObject {
 
     private Solo solo;
 
-    private EditText editTextEmail;
-    private EditText editTextPassword;
-    private Button buttonLogin;
+    private EditText editTextLibra;
+    private TextView textViewKg;
+    private Button btLibraKg;
 
     public LibraPageObject(Solo soloRef){
         this.solo = soloRef;
@@ -24,15 +25,13 @@ public class LibraPageObject {
     }
 
     private void updateFields() {
-        editTextEmail = (EditText) solo.getView(R.id.editEmail);
-        editTextPassword = (EditText) solo.getView(R.id.editPassword);
-        buttonLogin = (Button) solo.getView(R.id.buttomLogin);
+        editTextLibra = (EditText) solo.getView(R.id.editTextLibra);
+        textViewKg = (TextView) solo.getView(R.id.textViewKg);
+        btLibraKg = (Button) solo.getView(R.id.btLibraKg);
     }
 
 
-    public void fillEmail(String email) {solo.enterText(editTextEmail, email);}
-
-    public void fillPassword(String password) {solo.enterText(editTextPassword, password);}
-
-    public void clickOnButtonLogin() {solo.clickOnView(buttonLogin);}
+    public void fillLibra(String libra) {solo.enterText(editTextLibra, libra);}
+    public void clickOnBtLibraKg() {solo.clickOnView(btLibraKg);}
+    public String getTextKgResult(){updateFields();return textViewKg.getText().toString();}
 }

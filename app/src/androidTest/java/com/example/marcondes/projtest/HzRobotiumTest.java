@@ -2,8 +2,8 @@ package com.example.marcondes.projtest;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.example.marcondes.projtest.models.Logger;
-import com.example.marcondes.projtest.pageObject.LoginPageObject;
+import com.example.marcondes.projtest.models.Conversor;
+import com.example.marcondes.projtest.pageObject.HzPageObject;
 import com.robotium.solo.Solo;
 
 
@@ -11,20 +11,20 @@ import com.robotium.solo.Solo;
  * Created by Bruno Ribeiro on 22/02/2018.
  */
 
-public class HzRobotiumTest extends ActivityInstrumentationTestCase2<LoginActivity> {
+public class HzRobotiumTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     private Solo solo;
-    private LoginPageObject loginPage;
-    private Logger logger;
+    private HzPageObject hzPage;
+    private Conversor conversor;
 
-    public HzRobotiumTest(){
-        super(LoginActivity.class);
+    public HzRobotiumTest(){super(MainActivity.class);
     }
 
     @Override
     public void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
-        loginPage = new LoginPageObject(solo);
+        hzPage = new HzPageObject(solo);
+        conversor = new Conversor();
     }
 
     @Override
@@ -32,38 +32,20 @@ public class HzRobotiumTest extends ActivityInstrumentationTestCase2<LoginActivi
         solo.finishOpenedActivities();
     }
 
-    public void testLoginSucesso() throws Exception{
-
-        loginPage.fillEmail("marcondesjra@gmail.com");
-        loginPage.fillPassword("123456");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Welcome"));
+    public void testHzToMHzSucesso() throws Exception{
+        hzPage.fillHz("1000");
+        hzPage.clickOnBtHzMHz();
+        double calculatedMHz = conversor.hzToMhz(1000);
+        double resultMHz = Double.valueOf(hzPage.getTextMHzResult());
+        assertEquals(calculatedMHz, resultMHz, 0.1);
     }
 
-    public void testLoginEmBranco() throws Exception{
-        loginPage.fillEmail("");
-        loginPage.fillPassword("");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-        //solo.sleep(1000);
-
-        loginPage.fillEmail("bruno");
-        loginPage.fillPassword("");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-        //solo.sleep(1000);
-
-        loginPage.fillEmail("");
-        loginPage.fillPassword("1234");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Blank field"));
-    }
-
-    public void testLoginIncorreto() throws Exception{
-        loginPage.fillEmail("userDoesNotExist");
-        loginPage.fillPassword("12341234");
-        loginPage.clickOnButtonLogin();
-        assertTrue("Message not displayed",solo.searchText("Email/Password invalid!"));
+    public void testHzBlank() throws Exception {
+        hzPage.fillHz("");
+        hzPage.clickOnBtHzMHz();
+        double calculatedMHz = conversor.hzToMhz(0);
+        double resultMHz = Double.valueOf(hzPage.getTextMHzResult());
+        assertEquals(calculatedMHz, resultMHz, 0.1);
     }
 
 }
