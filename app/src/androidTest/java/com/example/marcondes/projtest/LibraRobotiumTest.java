@@ -1,23 +1,23 @@
 package com.example.marcondes.projtest;
 
 import android.test.ActivityInstrumentationTestCase2;
-import com.robotium.solo.Solo;
-import com.example.marcondes.projtest.pageObject.LoginPageObject;
+
 import com.example.marcondes.projtest.models.Logger;
-import com.example.marcondes.projtest.models.User;
+import com.example.marcondes.projtest.pageObject.LoginPageObject;
+import com.robotium.solo.Solo;
 
 
 /**
  * Created by Bruno Ribeiro on 22/02/2018.
  */
 
-public class LoginRobotiumTest extends ActivityInstrumentationTestCase2<LoginActivity> {
+public class LibraRobotiumTest extends ActivityInstrumentationTestCase2<LoginActivity> {
 
     private Solo solo;
     private LoginPageObject loginPage;
     private Logger logger;
 
-    public LoginRobotiumTest(){
+    public LibraRobotiumTest(){
         super(LoginActivity.class);
     }
 
