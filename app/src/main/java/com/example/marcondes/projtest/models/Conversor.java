@@ -6,7 +6,7 @@ package com.example.marcondes.projtest.models;
 
 public class Conversor {
 
-    public double mileToKm(double mile){return 1.6 * mile;}
+    public double mileToKm(double mile){return mile * 1.6;}
 
     public double celsiusToKelvin(double celsius){return celsius + 273.15;}
 
